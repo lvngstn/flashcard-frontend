@@ -1,0 +1,11 @@
+.editorCode {
+    background-color: hsl(234, 5%, 17%);
+    font-family: monospace;
+    display: block;
+    padding: 8px 8px 8px 52px;
+    font-size: 13px;
+    margin: 8px 0 12px 0;
+    tab-size: 2;
+    border-radius: 8px;
+    overflow-x: auto;
+}
