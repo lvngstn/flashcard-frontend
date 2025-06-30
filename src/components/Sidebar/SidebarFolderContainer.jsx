@@ -22,7 +22,7 @@ function SidebarFolderContainer({ collapseAll }) {
     }, [getParentFolders, refreshKey]);
     
     return (
-        <div className="flex flex-col overflow-y-auto overflow-x-hidden max-h-[calc(100vh-200px)]">
+        <div className="flex flex-col overflow-y-auto overflow-x-hidden h-[calc(100vh-250px)]">
             {folders.map((folder) => (
                 <SidebarFolder key={folder.id} folder={folder} collapse={collapseAll} />
             ))}

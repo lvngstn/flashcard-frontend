@@ -49,8 +49,8 @@ export default function SidebarFolder({folder, collapse}) {
     <div>
       <div className="flex items-center w-full hover:bg-neutral-800/90 rounded-lg px-2 py-0.5">
         <Button h="h-5" w="w-5" onClick={handleClick} children={isClicked ? <ChevronDownIcon/> : <ChevronRightIcon/>} variant="tertiary_icon" />
-        <Link className="w-full" to={`/view/${folder.id}/cards`}>
-          <span className="font-normal text-sm text-neutral-50 whitespace-nowrap overflow-hidden">{folder.name}</span>
+        <Link className="w-full overflow-hidden" to={`/view/${folder.id}/cards`}>
+          <span className="font-normal text-sm text-neutral-50 truncate block pr-2">{folder.name}</span>
         </Link>
 
         <PageLink to={`/edit/${folder.id}`} h="h-4" w="w-4" children={<EditIcon />} variant="tertiary_icon" />
@@ -58,7 +58,7 @@ export default function SidebarFolder({folder, collapse}) {
 
 
       {isClicked && (
-        <div className="flex flex-col pl-4">
+        <div className="flex flex-col pl-2">
           {subfolders.map((subfolder) => (
             <SidebarFolder key={subfolder.id} folder={subfolder} collapse={collapse}/>
           ))}
