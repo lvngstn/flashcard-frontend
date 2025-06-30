@@ -135,6 +135,19 @@ export const useFlashcards = () => {
         }
     }, []);
 
+    const setChecked = useCallback(async (id, checked) => {
+        try {
+            setLoading(true);
+            const response = await flashcardService.setChecked(id, checked);
+            return response.data;
+        } catch (err) {
+            setError(err.response?.data?.message || 'Failed to set flashcard checked');
+            throw err;
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
     return {
         loading,
         error,
@@ -147,7 +160,8 @@ export const useFlashcards = () => {
         getFlashcardQuestion,
         getFlashcardAnswer,
         updateFlashcardQuestion,
-        updateFlashcardAnswer
+        updateFlashcardAnswer,
+        setChecked
     };
 };
 

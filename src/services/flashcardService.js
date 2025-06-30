@@ -42,6 +42,10 @@ const updateFlashcardAnswer = (id, answer) => {
     return axios.put(`${API_URL}/${id}/answer`, { answer });
 }
 
+const setChecked = (id, checked) => {
+    return axios.put(`${API_URL}/${id}/checked`, { checked });
+}
+
 export default {
     createFlashcard,
     updateFlashcard,
@@ -52,5 +56,6 @@ export default {
     getFlashcardQuestion,
     getFlashcardAnswer,
     updateFlashcardQuestion,
-    updateFlashcardAnswer
+    updateFlashcardAnswer,
+    setChecked
 }

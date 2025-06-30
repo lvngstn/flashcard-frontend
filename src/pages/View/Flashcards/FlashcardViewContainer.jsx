@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import SectionHeader from '../../../components/ui/SectionHeader'
+import { useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+
+import { useFolders } from '../../../hooks/useFolders'
+
+import Button from '../../../components/ui/Button'  
 import FolderViewUtils from '../FolderViewUtils'
 import FlashcardRowsContainer from './FlashcardRowsContainer'
-import { useParams } from 'react-router-dom'
-import { useFolders } from '../../../hooks/useFolders'
+import SectionHeader from '../../../components/ui/SectionHeader'
+
 import ChevronUpIcon from '../../../assets/svg/chevron-up.svg?react'
-import Button from '../../../components/ui/Button'
-import { useNavigate } from 'react-router-dom'
 
 function FlashcardViewContainer() {
     const { folderId } = useParams();
@@ -30,7 +32,11 @@ function FlashcardViewContainer() {
     const navigateParentFolder = async () => {
         try {
             const data = await getParentFolderId(folderId);
-            navigate(`/view/${data}/folders`);
+            if (data === -1) {
+                navigate('/');
+            } else {
+                navigate(`/view/${data}/folders`);
+            }
         } catch (err) {
             console.error('Error fetching parent folder:', err);
         }

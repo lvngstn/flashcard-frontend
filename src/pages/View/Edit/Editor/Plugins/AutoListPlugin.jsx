@@ -39,10 +39,10 @@ export default function AutoListPlugin() {
             }
 
             const textContent = parent.getTextContent();
-            console.log(textContent);
 
             // Match bullet list: "- "
             if (/^-/.test(textContent)) {
+              event.preventDefault();
               const listNode = $createListNode('bullet');
               const listItemNode = $createListItemNode();
 
@@ -78,15 +78,20 @@ export default function AutoListPlugin() {
     const unregisterTab = editor.registerCommand(
       KEY_TAB_COMMAND,
       (event) => {
-        event.preventDefault();
         return editor.update(() => {
           const selection = $getSelection();
+          const anchor = selection.anchor;
+          const anchorNode = anchor.getNode();
+          
+          if (anchorNode.getType() !== 'listitem') {
+            return false;
+          }
+          event.preventDefault();
+
+
           if (!$isRangeSelection(selection) || !selection.isCollapsed()) {
             return false;
           }
-
-          const anchor = selection.anchor;
-          const anchorNode = anchor.getNode();
 
           if (!$isListItemNode(anchorNode)) {
             return false;

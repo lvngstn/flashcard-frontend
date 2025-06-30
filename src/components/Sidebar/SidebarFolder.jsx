@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
-import Button from "../ui/Button";
-import ChevronRightIcon from "../../assets/svg/chevron-right.svg?react";
-import ChevronDownIcon from "../../assets/svg/chevron-down.svg?react";
-import { useFlashcards } from '../../hooks/useFlashcards';
+import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import { useFolders } from '../../hooks/useFolders';
-import PageLink from '../ui/PageLink';
-import MoreIcon from '../../assets/svg/edit-01.svg?react';
 
-export default function SidebarFolder({folder}) {
-  const [isClicked, setClicked] = useState(false);
+import { useFlashcards } from '../../hooks/useFlashcards';
+import { useFolders } from '../../hooks/useFolders';
+
+import Button from "../ui/Button";
+import PageLink from '../ui/PageLink';
+
+import ChevronDownIcon from "../../assets/svg/chevron-down.svg?react";
+import ChevronRightIcon from "../../assets/svg/chevron-right.svg?react";
+import EditIcon from '../../assets/svg/edit-01.svg?react';
+
+export default function SidebarFolder({folder, collapse}) {
+  const [isClicked, setClicked] = useState(collapse);
   const { getFlashcards } = useFlashcards();
   const [flashcards, setFlashcards] = useState([]);
   const { getSubfolders } = useFolders();
@@ -45,25 +48,19 @@ export default function SidebarFolder({folder}) {
   return (
     <div>
       <div className="flex items-center w-full hover:bg-neutral-800/90 rounded-lg px-2 py-0.5">
-        <button onClick={handleClick} />
         <Button h="h-5" w="w-5" onClick={handleClick} children={isClicked ? <ChevronDownIcon/> : <ChevronRightIcon/>} variant="tertiary_icon" />
         <Link className="w-full" to={`/view/${folder.id}/cards`}>
-          <span className="font-normal text-sm text-neutral-50 whitespace-nowrap">{folder.name}</span>
+          <span className="font-normal text-sm text-neutral-50 whitespace-nowrap overflow-hidden">{folder.name}</span>
         </Link>
 
-        <PageLink to={`/edit/${folder.id}`} h="h-4" w="w-4" children={<MoreIcon />} variant="tertiary_icon" />
+        <PageLink to={`/edit/${folder.id}`} h="h-4" w="w-4" children={<EditIcon />} variant="tertiary_icon" />
       </div>
 
 
       {isClicked && (
         <div className="flex flex-col pl-4">
-          {/* {flashcards.map((flashcard) => (
-            <button key={flashcard.id} className="flex items-center gap-2 w-full hover:bg-neutral-800/90 rounded-lg px-2 py-0.5">
-              <span className="font-normal text-sm text-neutral-50">{flashcard.question}</span>
-            </button>
-          ))} */}
           {subfolders.map((subfolder) => (
-            <SidebarFolder key={subfolder.id} folder={subfolder} />
+            <SidebarFolder key={subfolder.id} folder={subfolder} collapse={collapse}/>
           ))}
         </div>
       )}

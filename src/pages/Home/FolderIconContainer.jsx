@@ -1,6 +1,5 @@
-import React from 'react';
-import FolderIcon from './FolderIcon';
 import { Link } from 'react-router-dom';
+import FolderIcon from './FolderIcon';
 
 function FolderIconContainer({folders}) {
     if (!folders || folders.length === 0) {

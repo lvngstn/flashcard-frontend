@@ -1,9 +1,8 @@
-import React from 'react'
-import TrashIcon from '../../../assets/svg/trash.svg?react'
 import Button from '../../../components/ui/Button'
 import RichTextEditor from './Editor/RichTextEditor'
+import TrashIcon from '../../../assets/svg/trash.svg?react'
 
-function EditFlashcardRow({ flashcard, onDelete, onEdit }) {
+function EditFlashcardRow({ flashcard, onDelete }) {
   return (
     <div className="flex flex-row bg-neutral-700 rounded-lg gap-2 p-4 text-neutral-100 justify-between items-center text-sm">
       <RichTextEditor isQuestion={true} id={flashcard.id}/>

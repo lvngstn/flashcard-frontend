@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+
+import { useFlashcards } from '../../hooks/useFlashcards'
+
 import StudyCard from './StudyCard'
 import StudyUtils from './StudyUtils'
-import { useParams } from 'react-router-dom'
-import { useFlashcards } from '../../hooks/useFlashcards'
-import { useNavigate } from 'react-router-dom'
-import { useCallback } from 'react'
 
 function StudyContainer() {
     const { folderId, all } = useParams();
@@ -17,7 +17,7 @@ function StudyContainer() {
 
     const fetchFlashcards = useCallback(async () => {
         try {
-            const data = await getFlashcards(folderId, false);
+            const data = await getFlashcards(folderId, all);
             setFolder(data || []);
         } catch (err) {
             console.error('Error fetching flashcards:', err);

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import FlashcardRow from './FlashcardRow'
-import { useFlashcards } from '../../../hooks/useFlashcards'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+
+import { useFlashcards } from '../../../hooks/useFlashcards'
+import FlashcardRow from './FlashcardRow'
 import PageLink from '../../../components/ui/PageLink'
 
 function FlashcardRowsContainer() {

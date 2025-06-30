@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import { useFlashcards } from '../../hooks/useFlashcards';
 
@@ -23,7 +23,7 @@ function FolderIcon({ folder, folderCount = 0 }) {
     }, [folder]);
 
     return (
-        <div className="w-48 h-fit bg-neutral-800 rounded-lg py-4 pl-4 pr-12 border-b-primary-200 border-b-4 hover:bg-neutral-850 transition-colors cursor-pointer">
+        <div className="w-48 h-28 bg-neutral-800 rounded-lg py-4 pl-4 pr-12 border-b-primary-200 border-b-4 hover:bg-neutral-850 transition-colors cursor-pointer">
             <div className="text-neutral-50 font-semibold text-lg truncate max-w-[180px]">
                 {folder.name}
             </div>

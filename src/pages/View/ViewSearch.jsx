@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import SearchIcon from '../../assets/svg/search.svg?react'
-import Button from '../../components/ui/Button'
+import { useState } from 'react'
 import { useFlashcards } from '../../hooks/useFlashcards';
+import Button from '../../components/ui/Button'
+import SearchIcon from '../../assets/svg/search.svg?react'
 
 function ViewSearch() {
     const [searchQuery, setSearchQuery] = useState('');
@@ -16,9 +16,9 @@ function ViewSearch() {
         }
     };
     return (
-        <div className="flex flex-row-reverse gap-2 hover:bg-neutral-850 bg-neutral-800 rounded-lg pl-2 pr-64 items-center">
+        <div className="flex flex-row-reverse gap-2 hover:bg-neutral-850 bg-neutral-800 rounded-lg pl-2 items-center">
             <input 
-                className="h-10 w-full bg-neutral-800 rounded-lg p-2 focus:outline-none text-neutral-300 placeholder:text-neutral-400" 
+                className="h-10 w-full bg-transparent rounded-lg focus:outline-none text-neutral-300 placeholder:text-neutral-400" 
                 value={searchQuery} 
                 type="text" 
                 placeholder="Search" 

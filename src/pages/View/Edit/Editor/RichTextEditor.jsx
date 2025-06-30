@@ -1,23 +1,27 @@
+import {useLocation} from 'react-router-dom';
+import { useEffect } from 'react';
+
+import { useFlashcards } from '../../../../hooks/useFlashcards';
+
 import {LexicalComposer} from '@lexical/react/LexicalComposer';
 import {RichTextPlugin} from '@lexical/react/LexicalRichTextPlugin';
 import {ContentEditable} from '@lexical/react/LexicalContentEditable';
 import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
 import {LexicalErrorBoundary} from '@lexical/react/LexicalErrorBoundary';
+import {useLexicalComposerContext} from '@lexical/react/LexicalComposerContext';
+
+import {CodeNode, CodeHighlightNode} from '@lexical/code';
+import {ListNode, ListItemNode} from '@lexical/list';
 
 import BoldPlugin from './Plugins/BoldPlugin';
 import UnderlinePlugin from './Plugins/UnderlinePlugin';
 import ItalicPlugin from './Plugins/ItalicPlugin';
 import StrikethroughPlugin from './Plugins/StrikethroughPlugin';
 import CodeBlockPlugin from './Plugins/CodeBlockPlugin';
-import {CodeNode, CodeHighlightNode} from '@lexical/code';
-import './editor.css';
 import AutoListPlugin from './Plugins/AutoListPlugin';
-import {ListNode, ListItemNode} from '@lexical/list';
-import {theme} from './theme';
-import {useLexicalComposerContext} from '@lexical/react/LexicalComposerContext';
-import {useEffect} from 'react';
-import {useFlashcards} from '../../../../hooks/useFlashcards';
-import {useLocation} from 'react-router-dom';
+
+import { theme } from './theme';
+import './editor.css';
 
 const variantStyles = {
   edit: "w-full border-b-2 border-neutral-900 bg-neutral-700 text-neutral-200 focus:outline-none",
@@ -36,7 +40,7 @@ function FlashcardSync({ isQuestion, id, location }) {
   useEffect(() => {
     let isMounted = true;
 
-    (location === "edit") ? editor.setEditable(true) : editor.setEditable(false);
+    (location !== "edit") ? editor.setEditable(false) : editor.setEditable(true);
 
     (isQuestion ? getFlashcardQuestion(id) : getFlashcardAnswer(id))
       .then(res => {

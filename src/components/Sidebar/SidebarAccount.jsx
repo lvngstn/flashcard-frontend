@@ -1,6 +1,5 @@
-import React from 'react'
-import UserIcon from '../../assets/svg/user.svg?react'
 import ChevronDownIcon from '../../assets/svg/chevron-down.svg?react'
+import UserIcon from '../../assets/svg/user.svg?react'
 
 function SidebarAccount() {
     return (

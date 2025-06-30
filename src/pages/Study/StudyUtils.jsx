@@ -1,12 +1,12 @@
-import React from 'react'
 import Button from '../../components/ui/Button'
-import CloseIcon from '../../assets/svg/close.svg?react'
-import SettingsIcon from '../../assets/svg/settings.svg?react'
-import BackIcon from '../../assets/svg/back.svg?react'
-import NextIcon from '../../assets/svg/next.svg?react'
-import ShuffleIcon from '../../assets/svg/shuffle.svg?react'
-import EditIcon from '../../assets/svg/edit-01.svg?react'
 import PageLink from '../../components/ui/PageLink'
+
+import BackIcon from '../../assets/svg/back.svg?react'
+import CloseIcon from '../../assets/svg/close.svg?react'
+import EditIcon from '../../assets/svg/edit-01.svg?react'
+import NextIcon from '../../assets/svg/next.svg?react'
+import SettingsIcon from '../../assets/svg/settings.svg?react'
+import ShuffleIcon from '../../assets/svg/shuffle.svg?react'
 
 function StudyUtils({folderId, onNext, onBack, length, index, onShuffle, onEdit}) {
     return (

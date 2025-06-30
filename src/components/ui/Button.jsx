@@ -3,7 +3,7 @@ const variantStyles = {
     secondary: "bg-primary-200 px-3 py-1 rounded text-neutral-950 hover:bg-primary-250",
     tertiary: "text-neutral-400 px-3 py-1 rounded hover:text-neutral-500",
     primary_icon: "p-1 bg-primary-350 rounded-full fill-neutral-50 stroke-neutral-50 hover:bg-primary-400 hover:fill-neutral-50 hover:stroke-neutral-50",
-    secondary_icon: "fill-neutral-950 stroke-neutral-950 hover:fill-neutral-900 hover:stroke-neutral-900",
+    secondary_icon: "stroke-neutral-950 hover:stroke-neutral-900 fill-none",
     tertiary_icon: "stroke-neutral-400 hover:stroke-neutral-500 fill-none"
   };
   

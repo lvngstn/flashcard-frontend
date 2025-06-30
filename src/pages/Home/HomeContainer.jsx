@@ -1,12 +1,15 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+
+import { useFolders } from '../../hooks/useFolders'
+
+import Button from '../../components/ui/Button'
+import FolderIconContainer from './FolderIconContainer'
 import HeroHomeText from './HeroHomeText'
 import HomeSearch from './HomeSearch'
 import SectionSubheader from '../../components/ui/SectionSubheader'
-import FolderIconContainer from './FolderIconContainer'
-import Button from '../../components/ui/Button'
+
 import EditIcon from '../../assets/svg/edit.svg?react'
-import { useFolders } from '../../hooks/useFolders'
-import { useNavigate } from 'react-router-dom';
 
 function HomeContainer() {
     const navigate = useNavigate();
@@ -27,8 +30,8 @@ function HomeContainer() {
 
     
     const handleCreateFolder = async () => {
-        await createFolder({ name: 'New Folder' });
-        await navigate(`/edit/${folders[0].id}`);
+        const newFolder = await createFolder({ name: 'New Folder' });
+        await navigate(`/edit/${newFolder.id}`);
     }
     
     return (

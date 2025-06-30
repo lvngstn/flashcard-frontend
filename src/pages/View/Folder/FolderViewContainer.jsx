@@ -29,7 +29,11 @@ function FolderViewContainer() {
     const navigateParentFolder = async () => {
         try {
             const data = await getParentFolderId(folderId);
-            navigate(`/view/${data}/folders`);
+            if (data === -1) {
+                navigate('/');
+            } else {
+                navigate(`/view/${data}/folders`);
+            }
         } catch (err) {
             console.error('Error fetching parent folder:', err);
         }

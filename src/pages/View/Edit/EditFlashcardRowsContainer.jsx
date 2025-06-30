@@ -1,16 +1,20 @@
-import React, { useEffect, useState, useCallback } from 'react'
-import EditFlashcardRow from './EditFlashcardRow'
-import { useParams } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import Button from '../../../components/ui/Button'
+import { useEffect, useState, useCallback } from 'react'
+import { useParams, Link } from 'react-router-dom'
+
 import { useFlashcards } from '../../../hooks/useFlashcards'
+import { useRefreshKey } from '../../../stores/store';
+
 import AddFlashcardButton from './AddFlashcardButton'
+import Button from '../../../components/ui/Button'
+import EditFlashcardRow from './EditFlashcardRow'
+
 import flashcardModel from '../../../models/flashcardModel.json'
 
 function EditFlashcardRowsContainer() {
     const { folderId } = useParams();
     const { getFlashcards, createFlashcard, deleteFlashcard, updateFlashcard } = useFlashcards();
     const [flashcards, setFlashcards] = useState([]);
+    const setRefreshKey = useRefreshKey((state) => state.setRefreshKey);
 
     const fetchFlashcards = useCallback(async () => {
         try {
@@ -68,7 +72,7 @@ function EditFlashcardRowsContainer() {
                 </div>
             </div>
             <div className="flex flex-row justify-center">
-                <Link to={`/view/${folderId}/cards`}><Button children={"Done"} variant="primary" /></Link>
+                <Link to={`/view/${folderId}/cards`}><Button onClick={() => setRefreshKey()} children={"Done"} variant="primary" /></Link>
             </div>
         </div>
     );

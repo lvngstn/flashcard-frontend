@@ -1,7 +1,6 @@
-import React from 'react';
-import ContentImage from '../Content/ContentImage';
 import ContentContainer from '../Content/ContentContainer';
 import ContentHeader from '../Content/ContentHeader';
+import ContentImage from '../Content/ContentImage';
 
 function Content({ children }) {
     return (

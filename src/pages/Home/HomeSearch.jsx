@@ -1,8 +1,8 @@
-import React from 'react'
-import SearchIcon from '../../assets/svg/search.svg?react'
 import { useState } from 'react';
+
 import { useFolders } from '../../hooks/useFolders';
 import Button from '../../components/ui/Button';
+import SearchIcon from '../../assets/svg/search.svg?react'
 
 function HomeSearch({onFolderSearch}) {
     const [searchQuery, setSearchQuery] = useState('');

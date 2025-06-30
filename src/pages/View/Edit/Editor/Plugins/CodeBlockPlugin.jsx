@@ -1,4 +1,3 @@
-import React from 'react'
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { $getSelection, $isRangeSelection } from "lexical";
 import { useEffect } from "react";
