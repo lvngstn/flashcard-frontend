@@ -3,7 +3,7 @@ import Sidebar from './Sidebar';
 
 function Layout({ children }) {
     return (
-        <div className="pl-64">
+        <div className="flex flex-row">
             <Sidebar />
             <Content>{children}</Content>
         </div>
